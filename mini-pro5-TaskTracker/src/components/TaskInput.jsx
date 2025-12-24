@@ -2,16 +2,11 @@ import React, { useState, useContext } from "react";
 import { TaskContext } from "../store/taskContext";
 
 const TaskInput = () => {
+  const { addTask } = useContext(TaskContext);
   const [text, setText] = useState("");
-  const { tasks, setTasks } = useContext(TaskContext);
 
   const handleAdd = () => {
-    if (!text.trim()) {
-      alert("Please enter a task");
-      return;
-    }
-    const newTask = { id: Date.now(), text, completed: false };
-    setTasks([...tasks, newTask]);
+    addTask(text);
     setText("");
   };
 
@@ -19,7 +14,7 @@ const TaskInput = () => {
     <div className="task-input">
       <input
         type="text"
-        placeholder="Enter task..."
+        placeholder="Enter a task..."
         value={text}
         onChange={(e) => setText(e.target.value)}
       />

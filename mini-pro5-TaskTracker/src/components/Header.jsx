@@ -1,13 +1,10 @@
-import React, { useContext } from "react";
-import { TaskContext } from "../store/taskContext";
+import React from "react";
 
-const Header = () => {
-  const { darkMode, setDarkMode } = useContext(TaskContext);
-
+const Header = ({ darkMode, toggleDarkMode }) => {
   return (
-    <header className={darkMode ? "header dark" : "header"}>
+    <header className="header">
       <h1>Task Tracker</h1>
-      <button onClick={() => setDarkMode(!darkMode)}>
+      <button className="toggle-btn" onClick={toggleDarkMode}>
         {darkMode ? "Light Mode" : "Dark Mode"}
       </button>
     </header>
